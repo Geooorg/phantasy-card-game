@@ -10,9 +10,9 @@ describe('mitgelieferte Decks', () => {
     expect(ids).toContain('erwachsene');
   });
 
-  it.each(decks.map((d) => [d.id, d] as const))('%s: Rücken, genug Karten, eindeutige Ids', (_id, deck) => {
+  it.each(decks.map((d) => [d.id, d] as const))('%s: Rücken, mindestens eine Karte, eindeutige Ids', (_id, deck) => {
     expect(deck.back).toBeTruthy();
-    expect(deck.cards.length).toBeGreaterThanOrEqual(4);
+    expect(deck.cards.length).toBeGreaterThan(0);
     const all = [...deck.cards, ...deck.open].map((c) => `${c.id}:${c.image}`);
     expect(new Set(all).size).toBe(all.length);
     expect(new Set(deck.cards.map((c) => c.id)).size).toBe(deck.cards.length);

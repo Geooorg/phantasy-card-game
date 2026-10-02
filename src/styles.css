@@ -295,6 +295,13 @@ h1 {
   .hand {
     gap: 10px;
   }
+
+  /* Stapel bleibt beim Scrollen über den Handkarten und antippbar */
+  .pile-wrap {
+    z-index: 1;
+    padding-bottom: 8px;
+    background: var(--paper);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

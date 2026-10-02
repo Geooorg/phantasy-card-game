@@ -23,9 +23,10 @@ cards/       Karten des Stapels (*.png) – werden gemischt und gezogen
 open/        optional: immer offene Karten (*.png), Reihenfolge nach Dateiname
 ```
 
+- Kartendateien müssen die Endung `.png` (kleingeschrieben) haben – andere Endungen oder Schreibweisen (z. B. `.PNG`, `.jpg`) werden ignoriert.
 - **Neue Karte:** PNG in `cards/` legen (quadratisch, ca. 700×700 px, am besten mit transparenten Ecken). Fertig – sie ist im Stapel, sobald der Entwicklungsserver neu lädt bzw. nach `npm run build`.
-- **Neues Deck:** neuen Ordner mit `deck.json`, `back.png` und mindestens 4 Karten in `cards/` anlegen. Es erscheint automatisch in der Auswahl.
-- Fehlt etwas Wesentliches (`deck.json`, `back.png`, Karten), zeigt die App eine verständliche Fehlermeldung mit dem Deck-Namen.
+- **Neues Deck:** neuen Ordner mit `deck.json`, `back.png` und Karten in `cards/` anlegen (mindestens 4 Karten empfohlen – bei weniger startet das Spiel mit allen vorhandenen). Es erscheint automatisch in der Auswahl.
+- Fehlt etwas Wesentliches (`deck.json`, `back.png`, Karten), zeigt die App eine verständliche Fehlermeldung mit dem Ordnernamen des Decks.
 
 ## Ursprung der Karten
 
