@@ -3,6 +3,7 @@ import { loadDecks } from './decks/loader';
 import type { Deck } from './decks/types';
 import { h } from './ui/dom';
 import { renderSelectScreen } from './ui/selectScreen';
+import { renderTableScreen } from './ui/tableScreen';
 
 const root = document.getElementById('app');
 if (!root) throw new Error('Element #app fehlt in index.html');
@@ -19,13 +20,6 @@ function showError(message: string): void {
   );
 }
 
-// Platzhalter bis Task 6: zeigt nur den gewählten Deck-Namen.
-function showTable(deck: Deck, onBack: () => void): void {
-  const back = h('button', { class: 'btn', type: 'button' }, 'Zurück');
-  back.addEventListener('click', onBack);
-  app.replaceChildren(h('main', { class: 'screen' }, h('h2', {}, deck.name), back));
-}
-
 function start(): void {
   let decks: Deck[];
   try {
@@ -34,7 +28,8 @@ function start(): void {
     showError(error instanceof Error ? error.message : String(error));
     return;
   }
-  const showSelect = () => renderSelectScreen(app, decks, (deck) => showTable(deck, showSelect));
+  const showSelect = () =>
+    renderSelectScreen(app, decks, (deck) => renderTableScreen(app, deck, showSelect));
   showSelect();
 }
 

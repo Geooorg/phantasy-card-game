@@ -15,7 +15,7 @@ export function createCard(card: Card, backImage: string, faceDown: boolean): HT
     {
       class: faceDown ? 'card' : 'card is-flipped',
       type: 'button',
-      'aria-label': 'Karte vergrößern',
+      'aria-label': faceDown ? 'Verdeckte Karte' : 'Karte vergrößern',
     },
     h('span', { class: 'card__inner' }, back, front),
   );
@@ -23,5 +23,8 @@ export function createCard(card: Card, backImage: string, faceDown: boolean): HT
 
 /** Dreht eine verdeckte Karte nach `delayMs` um (die Pause lässt den Browser den Startzustand zeichnen). */
 export function flipUp(el: HTMLElement, delayMs = 0): void {
-  window.setTimeout(() => el.classList.add('is-flipped'), delayMs + 50);
+  window.setTimeout(() => {
+    el.classList.add('is-flipped');
+    el.setAttribute('aria-label', 'Karte vergrößern');
+  }, delayMs + 50);
 }
