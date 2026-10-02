@@ -8,7 +8,7 @@ Karten ziehen, Geschichten erzählen: Man wählt ein Deck (Kinder oder Erwachsen
 npm install
 npm run dev      # Entwicklungsserver
 npm run build    # Tests + komprimierte statische Seite nach dist/
-npm run serve    # dist/ lokal ausliefern: http://localhost:8080
+npm run serve    # dist/ lokal ausliefern: http://localhost:8765
 npm run serve:lan  # wie serve, aber im lokalen Netz erreichbar (z. B. vom Tablet)
 npm start        # build + serve in einem Schritt
 npm test         # Tests
@@ -23,6 +23,14 @@ npm test         # Tests
 - Ergebnis: `dist/` ist von ca. 17 MB auf ca. 4,6 MB geschrumpft.
 
 `npm run serve` startet einen kleinen Webserver (sirv), der automatisch die kleinste passende Variante (Brotli, Gzip oder unkomprimiert) liefert. Die Dateien aus `dist/` lassen sich auch auf jedem anderen statischen Webserver (nginx, Apache, …) ablegen; für die Brotli-/Gzip-Dateien muss dieser „precompressed assets“ unterstützen, sonst wird einfach unkomprimiert geliefert.
+
+## Offline-Betrieb (PWA)
+
+Die App ist eine Progressive Web App: Beim ersten Aufruf legt ein Service Worker die gesamte App inklusive aller Karten (ca. 4,4 MB) im Browser-Cache ab. Danach läuft sie auch ohne Netz, und man kann sie über „Zur Startseite hinzufügen“ bzw. „Installieren“ wie eine App starten.
+
+- **Voraussetzung:** Service Worker funktionieren nur über `https://` oder `http://localhost`. `npm run serve` (localhost) reicht für den Rechner selbst. Von einem Tablet im Netz (`serve:lan`, `http://192.168.…`) wird der Service Worker **nicht** aktiviert – dafür braucht es HTTPS (z. B. lokales Zertifikat mit mkcert oder ein Hosting mit HTTPS).
+- **Updates:** Nach einem neuen Build lädt der Browser die neue Version beim nächsten Aufruf mit Netz im Hintergrund; zu sehen ist sie nach dem nächsten Neuladen bzw. App-Start.
+- **Neue Karten** werden automatisch mit in den Cache aufgenommen. Die App-Icons liegen in `public/icons/` und lassen sich mit `node scripts/make-icons.mjs` neu erzeugen.
 
 ## Neue Karten hinzufügen
 
