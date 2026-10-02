@@ -12,7 +12,8 @@
     "typecheck": "tsc --noEmit",
     "serve": "sirv dist --port 8765 --brotli --gzip --etag",
     "serve:lan": "sirv dist --host 0.0.0.0 --port 8765 --brotli --gzip --etag",
-    "start": "npm run build && npm run serve"
+    "start": "npm run build && npm run serve",
+    "package": "npm run build && cd dist && rm -f ../fantasie-game.zip && zip -qr ../fantasie-game.zip . -x '.DS_Store'"
   },
   "devDependencies": {
     "sharp": "^0.35.5",

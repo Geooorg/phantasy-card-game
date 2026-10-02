@@ -24,6 +24,14 @@ npm test         # Tests
 
 `npm run serve` startet einen kleinen Webserver (sirv), der automatisch die kleinste passende Variante (Brotli, Gzip oder unkomprimiert) liefert. Die Dateien aus `dist/` lassen sich auch auf jedem anderen statischen Webserver (nginx, Apache, …) ablegen; für die Brotli-/Gzip-Dateien muss dieser „precompressed assets“ unterstützen, sonst wird einfach unkomprimiert geliefert.
 
+## Hochladen (Deployment)
+
+```bash
+npm run package   # Tests + Build + Archiv fantasie-game.zip
+```
+
+`fantasie-game.zip` (ca. 4,6 MB) enthält den Inhalt von `dist/`. Entpacken und den Inhalt auf einen beliebigen Webspace hochladen – im Hauptverzeichnis oder in einem Unterordner (`https://example.de/spiel/`), die Pfade sind relativ. Für den Offline-Betrieb muss die Seite über **HTTPS** erreichbar sein. Die `.gz`/`.br`-Dateien werden nur von Servern genutzt, die vorkomprimierte Dateien unterstützen (nginx `gzip_static`/`brotli_static`, Caddy `precompressed`); sonst können sie ignoriert oder weggelassen werden.
+
 ## Offline-Betrieb (PWA)
 
 Die App ist eine Progressive Web App: Beim ersten Aufruf legt ein Service Worker die gesamte App inklusive aller Karten (ca. 4,4 MB) im Browser-Cache ab. Danach läuft sie auch ohne Netz, und man kann sie über „Zur Startseite hinzufügen“ bzw. „Installieren“ wie eine App starten.
