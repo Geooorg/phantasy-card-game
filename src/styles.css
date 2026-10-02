@@ -1,0 +1,313 @@
+:root {
+  --paper: #f6efe2;
+  --paper-dark: #ebe1cc;
+  --ink: #2b2a28;
+  --ink-soft: #6b665c;
+  --accent: #b9552f;
+  --accent-dark: #8f3f20;
+  --shadow: 0 6px 14px rgba(43, 42, 40, 0.22);
+  --card-w: clamp(104px, 15vw, 190px);
+  --small-card-w: clamp(56px, 7.2vw, 100px);
+  font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+.screen {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 20px 32px;
+}
+
+h1 {
+  margin: 0 0 0.25em;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 0.02em;
+}
+
+.error {
+  color: #8f1d1d;
+  font-weight: 700;
+}
+
+/* Deckauswahl */
+.screen--select {
+  padding-top: 6vh;
+  text-align: center;
+}
+
+.lead {
+  margin: 0 0 2rem;
+  color: var(--ink-soft);
+  font-size: 1.15rem;
+}
+
+.deck-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.deck-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: min(300px, 80vw);
+  padding: 20px;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  background: #fffaf0;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.deck-tile:hover,
+.deck-tile:focus-visible {
+  transform: translateY(-4px) rotate(-1deg);
+  box-shadow: 0 12px 22px rgba(43, 42, 40, 0.28);
+}
+
+.deck-tile__back {
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0 4px 6px rgba(43, 42, 40, 0.28));
+}
+
+.deck-tile__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.deck-tile__desc {
+  color: var(--ink-soft);
+}
+
+/* Spieltisch */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.topbar h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.btn {
+  padding: 10px 18px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: #fffaf0;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn:hover {
+  background: var(--paper-dark);
+}
+
+.btn--highlight {
+  border-color: var(--accent-dark);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+.btn--highlight:hover {
+  background: var(--accent-dark);
+}
+
+.open-bar {
+  --card-w: var(--small-card-w);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 10px;
+  border-radius: 14px;
+  background: var(--paper-dark);
+}
+
+.table {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.pile-wrap {
+  position: sticky;
+  top: 12px;
+  flex: none;
+  width: var(--card-w);
+  text-align: center;
+}
+
+.pile-hint {
+  margin: 8px 0 0;
+  color: var(--ink-soft);
+}
+
+.hand {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Karten */
+.card {
+  width: var(--card-w);
+  padding: 0;
+  border: 0;
+  background: none;
+  aspect-ratio: 708 / 713;
+  perspective: 900px;
+  cursor: zoom-in;
+  filter: drop-shadow(0 4px 6px rgba(43, 42, 40, 0.28));
+}
+
+.card__inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card.is-flipped .card__inner {
+  transform: rotateY(180deg);
+}
+
+.card__face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card__face--front {
+  transform: rotateY(180deg);
+}
+
+/* Stapel */
+.pile {
+  position: relative;
+  width: var(--card-w);
+  padding: 0;
+  border: 0;
+  background: none;
+  aspect-ratio: 708 / 713;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.pile:hover:not(:disabled) {
+  transform: translateY(-3px);
+}
+
+.pile__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(3px 3px 0 #d9ceb8) drop-shadow(6px 6px 0 #c9bda4);
+}
+
+.pile__count {
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+  min-width: 2em;
+  padding: 0.15em 0.5em;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+.pile--empty {
+  border: 3px dashed var(--ink-soft);
+  border-radius: 14px;
+  cursor: default;
+}
+
+.pile--empty .pile__img {
+  opacity: 0.15;
+  filter: none;
+}
+
+.pile--empty .pile__count {
+  display: none;
+}
+
+/* Großansicht */
+.zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(30, 28, 24, 0.75);
+  cursor: zoom-out;
+}
+
+.zoom__img {
+  width: min(92vw, 92vh);
+  height: auto;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5));
+}
+
+@media (max-width: 640px) {
+  :root {
+    --card-w: 42vw;
+    --small-card-w: 22vw;
+  }
+
+  .table {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hand {
+    gap: 10px;
+  }
+
+  /* Stapel bleibt beim Scrollen über den Handkarten und antippbar */
+  .pile-wrap {
+    z-index: 1;
+    padding-bottom: 8px;
+    background: var(--paper);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card__inner,
+  .deck-tile,
+  .pile {
+    transition: none;
+  }
+}
