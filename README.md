@@ -7,10 +7,22 @@ Karten ziehen, Geschichten erzählen: Man wählt ein Deck (Kinder oder Erwachsen
 ```bash
 npm install
 npm run dev      # Entwicklungsserver
-npm run build    # statische Seite nach dist/
-npm run preview  # gebautes Ergebnis ansehen
+npm run build    # Tests + komprimierte statische Seite nach dist/
+npm run serve    # dist/ lokal ausliefern: http://localhost:8080
+npm run serve:lan  # wie serve, aber im lokalen Netz erreichbar (z. B. vom Tablet)
+npm start        # build + serve in einem Schritt
 npm test         # Tests
 ```
+
+## Build und Auslieferung
+
+`npm run build` erzeugt in `dist/` eine komplett statische Seite (läuft auch aus einem Unterordner, `base: './'`):
+
+- **Karten:** Die PNGs werden beim Build auf eine 8-Bit-Palette reduziert (ca. −74 %, optisch kaum zu unterscheiden). Die Originale in `assets/` bleiben unverändert, auch neue Karten werden automatisch optimiert.
+- **Text-Dateien** (HTML, JS, CSS) werden zusätzlich vorab als `.gz` und `.br` abgelegt.
+- Ergebnis: `dist/` ist von ca. 17 MB auf ca. 4,6 MB geschrumpft.
+
+`npm run serve` startet einen kleinen Webserver (sirv), der automatisch die kleinste passende Variante (Brotli, Gzip oder unkomprimiert) liefert. Die Dateien aus `dist/` lassen sich auch auf jedem anderen statischen Webserver (nginx, Apache, …) ablegen; für die Brotli-/Gzip-Dateien muss dieser „precompressed assets“ unterstützen, sonst wird einfach unkomprimiert geliefert.
 
 ## Neue Karten hinzufügen
 

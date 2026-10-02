@@ -9,11 +9,18 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "serve": "sirv dist --port 8080 --brotli --gzip --etag",
+    "serve:lan": "sirv dist --host 0.0.0.0 --port 8080 --brotli --gzip --etag",
+    "start": "npm run build && npm run serve"
   },
   "devDependencies": {
+    "sharp": "^0.35.5",
+    "sirv-cli": "^3.0.1",
     "typescript": "^7.0.2",
     "vite": "^8.3.2",
+    "vite-plugin-compression2": "^2.5.3",
+    "vite-plugin-image-optimizer": "^2.0.3",
     "vitest": "^5.0.3"
   }
 }
