@@ -1,13 +1,13 @@
 // Gezeichnete Karten für das Erwachsenen-Deck (Nummern ab 049).
 import { cloud, flame, star, sparkle, bird, person, dashed, rotated } from './lib.mjs';
 
-const G = '#e4e1dc';
+export const G = '#e4e1dc';
 
 /** Skalierte Punktliste relativ zu (x,y) → Pfad. */
-const at = (x, y, s) => (dx, dy) => `${(x + dx * s).toFixed(1)} ${(y + dy * s).toFixed(1)}`;
+export const at = (x, y, s) => (dx, dy) => `${(x + dx * s).toFixed(1)} ${(y + dy * s).toFixed(1)}`;
 
 /** Auto von der Seite, (x,y) = linkes Ende auf dem Boden, w = Länge, nach rechts fahrend. */
-function car(x, y, w, { fill = '#fff', flip = false } = {}) {
+export function car(x, y, w, { fill = '#fff', flip = false } = {}) {
   const s = w / 200;
   const P = flip ? (dx, dy) => at(x, y, s)(200 - dx, dy) : at(x, y, s);
   return `
@@ -18,35 +18,35 @@ function car(x, y, w, { fill = '#fff', flip = false } = {}) {
 }
 
 /** Tanne, Fuß (x,y), Höhe h. */
-const fir = (x, y, h, fill = 'url(#hatch)') =>
+export const fir = (x, y, h, fill = 'url(#hatch)') =>
   `<path fill="${fill}" d="M${x} ${y - h} L${x - h * 0.3} ${y - h * 0.15} L${x + h * 0.3} ${y - h * 0.15} Z"/><path fill="none" d="M${x} ${y - h * 0.15} V${y}"/>`;
 
 /** Kahler Baum, Fuß (x,y), Höhe h, Richtung dir (1/-1). */
-const bareTree = (x, y, h, dir = 1) => {
+export const bareTree = (x, y, h, dir = 1) => {
   const P = (dx, dy) => `${x + dx * (h / 300) * dir} ${y - dy * (h / 300)}`;
   return `<path fill="url(#hatch)" d="M${P(-14, 0)} L${P(-8, 160)} L${P(-60, 230)} L${P(-50, 238)} L${P(-2, 180)} L${P(4, 300)} L${P(16, 300)} L${P(14, 190)} L${P(70, 250)} L${P(78, 240)} L${P(18, 160)} L${P(22, 0)} Z"/>
   <path fill="none" stroke-width="3.5" d="M${P(-40, 205)} L${P(-80, 210)} M${P(45, 220)} L${P(60, 275)} M${P(8, 250)} L${P(-30, 290)}"/>`;
 };
 
 /** Gitterturm (Kran, Startturm), von (x,y1) bis y2, Breite w. */
-const lattice = (x, y1, y2, w, step = 40) => {
+export const lattice = (x, y1, y2, w, step = 40) => {
   let d = `M${x} ${y1} V${y2} M${x + w} ${y1} V${y2}`;
   for (let y = y1; y < y2; y += step) d += ` M${x} ${y} L${x + w} ${y + step} M${x + w} ${y} L${x} ${y + step} M${x} ${y} H${x + w}`;
   return `<path fill="none" stroke-width="3.5" d="${d}"/>`;
 };
 
 /** Pseudozufall, reproduzierbar. */
-function rng(seed) {
+export function rng(seed) {
   let s = seed;
   return () => ((s = (s * 1103515245 + 12345) % 2147483648) / 2147483648);
 }
 
 /** Notenzeichen. */
-const note = (x, y) =>
+export const note = (x, y) =>
   `<ellipse cx="${x}" cy="${y}" rx="11" ry="8" fill="#2e2e2e" transform="rotate(-20 ${x} ${y})"/><path fill="none" stroke-width="4" d="M${x + 10} ${y - 2} V${y - 48} q14 8 18 22"/>`;
 
 /** Gezackte Sprechblase um (cx,cy). */
-const burst = (cx, cy, rx, ry, tail) => {
+export const burst = (cx, cy, rx, ry, tail) => {
   const pts = [];
   for (let i = 0; i < 18; i++) {
     const a = (Math.PI * 2 * i) / 18;

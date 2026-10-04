@@ -10,6 +10,7 @@ import sharp from 'sharp';
 import { cardSvg } from './lib.mjs';
 import kids from './kids.mjs';
 import erwachsene from './erwachsene.mjs';
+import erwachsene2 from './erwachsene-2.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const args = process.argv.slice(2);
@@ -17,7 +18,7 @@ const outIdx = args.indexOf('--out');
 const outDir = outIdx >= 0 ? path.resolve(args.splice(outIdx, 2)[1]) : null;
 const only = new Set(args);
 
-const decks = { kids, erwachsene };
+const decks = { kids, erwachsene: [...erwachsene, ...erwachsene2] };
 let count = 0;
 for (const [deck, cards] of Object.entries(decks)) {
   for (const card of cards) {

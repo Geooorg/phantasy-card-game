@@ -20,7 +20,7 @@ npm test         # Tests
 
 - **Karten:** Die PNGs werden beim Build auf eine 8-Bit-Palette reduziert (ca. −74 %, optisch kaum zu unterscheiden). Die Originale in `assets/` bleiben unverändert, auch neue Karten werden automatisch optimiert.
 - **Text-Dateien** (HTML, JS, CSS) werden zusätzlich vorab als `.gz` und `.br` abgelegt.
-- Ergebnis: `dist/` ist von ca. 25 MB auf ca. 7,7 MB geschrumpft (180 Karten).
+- Ergebnis: `dist/` ist von ca. 36 MB auf ca. 12 MB geschrumpft (208 Karten).
 
 `npm run serve` startet einen kleinen Webserver (sirv), der automatisch die kleinste passende Variante (Brotli, Gzip oder unkomprimiert) liefert. Die Dateien aus `dist/` lassen sich auch auf jedem anderen statischen Webserver (nginx, Apache, …) ablegen; für die Brotli-/Gzip-Dateien muss dieser „precompressed assets“ unterstützen, sonst wird einfach unkomprimiert geliefert.
 
@@ -30,11 +30,11 @@ npm test         # Tests
 npm run package   # Tests + Build + Archiv fantasie-game.zip
 ```
 
-`fantasie-game.zip` (ca. 7,2 MB) enthält den Inhalt von `dist/`. Entpacken und den Inhalt auf einen beliebigen Webspace hochladen – im Hauptverzeichnis oder in einem Unterordner (`https://example.de/spiel/`), die Pfade sind relativ. Für den Offline-Betrieb muss die Seite über **HTTPS** erreichbar sein. Die `.gz`/`.br`-Dateien werden nur von Servern genutzt, die vorkomprimierte Dateien unterstützen (nginx `gzip_static`/`brotli_static`, Caddy `precompressed`); sonst können sie ignoriert oder weggelassen werden.
+`fantasie-game.zip` (ca. 11 MB) enthält den Inhalt von `dist/`. Entpacken und den Inhalt auf einen beliebigen Webspace hochladen – im Hauptverzeichnis oder in einem Unterordner (`https://example.de/spiel/`), die Pfade sind relativ. Für den Offline-Betrieb muss die Seite über **HTTPS** erreichbar sein. Die `.gz`/`.br`-Dateien werden nur von Servern genutzt, die vorkomprimierte Dateien unterstützen (nginx `gzip_static`/`brotli_static`, Caddy `precompressed`); sonst können sie ignoriert oder weggelassen werden.
 
 ## Offline-Betrieb (PWA)
 
-Die App ist eine Progressive Web App: Beim ersten Aufruf legt ein Service Worker die gesamte App inklusive aller Karten (ca. 7,4 MB) im Browser-Cache ab. Danach läuft sie auch ohne Netz, und man kann sie über „Zur Startseite hinzufügen“ bzw. „Installieren“ wie eine App starten.
+Die App ist eine Progressive Web App: Beim ersten Aufruf legt ein Service Worker die gesamte App inklusive aller Karten (ca. 11 MB) im Browser-Cache ab. Danach läuft sie auch ohne Netz, und man kann sie über „Zur Startseite hinzufügen“ bzw. „Installieren“ wie eine App starten.
 
 - **Voraussetzung:** Service Worker funktionieren nur über `https://` oder `http://localhost`. `npm run serve` (localhost) reicht für den Rechner selbst. Von einem Tablet im Netz (`serve:lan`, `http://192.168.…`) wird der Service Worker **nicht** aktiviert – dafür braucht es HTTPS (z. B. lokales Zertifikat mit mkcert oder ein Hosting mit HTTPS).
 - **Updates:** Nach einem neuen Build lädt der Browser die neue Version beim nächsten Aufruf mit Netz im Hintergrund; zu sehen ist sie nach dem nächsten Neuladen bzw. App-Start.
@@ -62,7 +62,7 @@ open/        optional: immer offene Karten (*.png), Reihenfolge nach Dateiname
 
 ## Gezeichnete Karten (SVG)
 
-Die Kinder-Karten ab `085` und die Erwachsenen-Karten ab `049` sind von Hand als SVG gezeichnet (`scripts/svg-cards/kids.mjs`, `scripts/svg-cards/erwachsene.mjs`, gemeinsame Formen und Strichstil in `lib.mjs`) und werden zu PNG gerendert:
+Die Kinder-Karten ab `085` und die Erwachsenen-Karten ab `049` sind von Hand als SVG gezeichnet (`scripts/svg-cards/kids.mjs`, `scripts/svg-cards/erwachsene.mjs` und `erwachsene-2.mjs`, gemeinsame Formen und Strichstil in `lib.mjs`) und werden zu PNG gerendert:
 
 ```bash
 node scripts/svg-cards/render.mjs                    # alle gezeichneten Karten nach assets/

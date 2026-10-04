@@ -8,7 +8,7 @@
 - *PDF* – aus den Original-PDFs extrahiert (`scripts/extract_cards.py`).
 - *SVG* – von Hand als SVG gezeichnet und mit `node scripts/svg-cards/render.mjs` gerendert. Die Quellen liegen in `scripts/svg-cards/`; dort lassen sich Motive ändern oder neue im gleichen Stil ergänzen.
 
-**Nächste freie Nummern:** Kinder `109`, Erwachsene `073`.
+**Nächste freie Nummern:** Kinder `109`, Erwachsene `101`.
 
 ## Kinder (`kids`) – 108 Karten
 
@@ -127,7 +127,7 @@ Stil: kräftige schwarze Strichzeichnung auf Weiß, ein einzelnes Motiv, leichte
 | 107.png | Fledermaus | Fledermaus, Nacht, Mond, Vampir, fliegen | SVG (`scripts/svg-cards/kids.mjs`) |
 | 108.png | Hängebrücke über der Schlucht | Brücke, Schlucht, Abgrund, Mut, Abenteuer | SVG (`scripts/svg-cards/kids.mjs`) |
 
-## Erwachsene (`erwachsene`) – 72 Karten + 12 offene Aktionskarten
+## Erwachsene (`erwachsene`) – 100 Karten + 12 offene Aktionskarten
 
 Stil: körnige Bleistift-Linien, Schraffuren und hellgraue Flächen, meist eine ganze Szene (Ort oder Situation).
 
@@ -207,6 +207,34 @@ Stil: körnige Bleistift-Linien, Schraffuren und hellgraue Flächen, meist eine 
 | 070.png | Beim Zahnarzt | Zahnarzt, Behandlung, Angst, Bohrer, Praxis | SVG (`scripts/svg-cards/erwachsene.mjs`) |
 | 071.png | Riesenrad auf der Kirmes | Riesenrad, Kirmes, Jahrmarkt, Nacht, Lichter | SVG (`scripts/svg-cards/erwachsene.mjs`) |
 | 072.png | Gefängniszelle | Gefängnis, Zelle, Gitter, Flucht, Schlüssel | SVG (`scripts/svg-cards/erwachsene.mjs`) |
+| 073.png | Weinverkostung | Wein, Verkostung, Weinkeller, Gläser, Genuss | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 074.png | Lasertag | Lasertag, Spiel, Dunkelheit, Laser, Team | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 075.png | Beachvolleyball | Beachvolleyball, Strand, Sport, Sommer, Spiel | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 076.png | Angeln am Steg | Angeln, See, Fisch, Steg, Ruhe | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 077.png | Wald mit Wölfen | Wölfe, Wald, Nacht, Vollmond, Gefahr | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 078.png | Banküberfall mit Pistole | Überfall, Pistole, Bank, Bedrohung, Krimi | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 079.png | Ausritt | Pferd, Reiten, Galopp, Natur, Freiheit | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 080.png | Bauernhof mit Pferd und Hund | Bauernhof, Pferd, Hund, Scheune, Land | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 081.png | Sauna | Sauna, Hitze, Entspannung, Dampf, Holz | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 082.png | Zeitbombe | Bombe, Countdown, Kabel, Entschärfen, Spannung | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 083.png | Verfolgung über die Dächer | Verfolgung, Dächer, Nacht, Sprung, Flucht | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 084.png | Geheime Übergabe im Park | Spionage, Übergabe, Umschlag, Park, Geheimnis | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 085.png | Verhör | Verhör, Polizei, Lampe, Verdächtiger, Krimi | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 086.png | Pokerrunde | Poker, Karten, Glücksspiel, Einsatz, Bluff | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 087.png | Kletterer an der Felswand | Klettern, Felswand, Seil, Abgrund, Mut | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 088.png | Rettungsboot auf offener See | Schiffbruch, Rettungsboot, Sturm, Meer, Überleben | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 089.png | Fallschirmsprung | Fallschirm, Sprung, Flugzeug, Höhe, Mut | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 090.png | Eingestürzte Brücke | Brücke, Einsturz, Auto, Abgrund, Bremsen | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 091.png | Hubschrauber mit Suchscheinwerfer | Hubschrauber, Suche, Nacht, Scheinwerfer, Flucht | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 092.png | Waldbrand | Feuer, Wald, Brand, Feuerwehr, Rauch | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 093.png | Einbrecher auf der Leiter | Einbruch, Leiter, Nacht, Fenster, Kamera | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 094.png | Anruf um Mitternacht | Telefon, Mitternacht, Anruf, Schreck, Nacht | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 095.png | Maskenball | Maskenball, Masken, Ball, Geheimnis, Dolch | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 096.png | Spuren im Schnee | Fußspuren, Schnee, Hütte, Nacht, Rätsel | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 097.png | Lagerhalle bei Nacht | Lagerhalle, Kisten, Taschenlampe, Nacht, Einbruch | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 098.png | Vogelscheuche im Gewitter | Vogelscheuche, Feld, Gewitter, Krähen, unheimlich | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 099.png | Dunkler Hotelflur | Hotel, Flur, Türen, Dunkelheit, Geheimnis | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
+| 100.png | Auto auf dem Bahnübergang | Bahnübergang, Zug, Auto, Panne, Gefahr | SVG (`scripts/svg-cards/erwachsene-2.mjs`) |
 
 ### open/ (immer offen liegende Aktionskarten)
 
