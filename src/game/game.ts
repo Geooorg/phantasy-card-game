@@ -14,7 +14,7 @@ export function newGame(deck: Pick<Deck, 'cards'>, rng: Rng = Math.random): Game
   return { hand: shuffled.slice(0, HAND_SIZE), pile: shuffled.slice(HAND_SIZE) };
 }
 
-/** Legt die oberste Stapelkarte rechts an die Hand. Bei leerem Stapel: unverändert. */
+/** Hängt die oberste Stapelkarte hinten an die Hand (die Anzeige zeigt sie vorn). Bei leerem Stapel: unverändert. */
 export function draw(game: Game): Game {
   const [next, ...rest] = game.pile;
   if (!next) return game;

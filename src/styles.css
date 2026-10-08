@@ -302,6 +302,11 @@ h1 {
     padding-bottom: 8px;
     background: var(--paper);
   }
+
+  /* Beim Hineinscrollen nicht unter dem klebenden Stapel verschwinden */
+  .hand .card {
+    scroll-margin-top: calc(var(--card-w) + 40px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

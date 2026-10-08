@@ -26,7 +26,8 @@ export function renderTableScreen(root: HTMLElement, deck: Deck, onBack: () => v
     el.addEventListener('click', () => {
       if (el.classList.contains('is-flipped')) showZoom(card.image);
     });
-    hand.append(el);
+    // Neueste Karte steht vorn (oben links), damit man nach dem Ziehen nicht scrollen muss.
+    hand.prepend(el);
     el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     flipUp(el, delayMs);
   }
